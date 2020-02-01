@@ -5,7 +5,7 @@ from zipcodeSearcher.zipcode.serializer import AddressSerializer
 from zipcodeSearcher.zipcode.models import Address
 
 
-class AddressViewSet(viewsets.ModelViewSet):
+class AddressViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Address.objects.all()
     serializer_class = AddressSerializer
     
