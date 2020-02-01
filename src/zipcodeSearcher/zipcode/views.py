@@ -1,4 +1,5 @@
 from rest_framework import viewsets
+from rest_framework.exceptions import ParseError
 
 from zipcodeSearcher.zipcode.serializer import AddressSerializer
 from zipcodeSearcher.zipcode.models import Address
@@ -15,5 +16,5 @@ class AddressViewSet(viewsets.ModelViewSet):
             zipcode = zipcode.replace('-', '')
             queryset = Address.objects.filter(zipcode=zipcode)
         else:
-            pass
+            raise ParseError('zipcodeが指定されていません')
         return queryset
